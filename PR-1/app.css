@@ -1,0 +1,68 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Full background */
+body {
+  background: linear-gradient(135deg, #0077ff, #00c6ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+  color: white;
+}
+
+/* Main container */
+.container {
+  width: 70%;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 35px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Navigation bar */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  background: #ffffff;
+  color: #0077ff;
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Page paragraph */
+p {
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  opacity: 0.92;
+}

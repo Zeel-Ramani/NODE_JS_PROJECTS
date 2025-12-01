@@ -1,55 +1,49 @@
 let http = require("http");
-
-let homePage = `
-  <html>
-    <head><title>Home</title></head>
-    <body style="font-family: Arial; text-align:center;">
-      <a href="/about" style="margin-right:20px;">About</a>
-      <a href="/contact">Contact</a>
-      <h1 style="color:blue;">Welcome to Home Page</h1>
-      <a href="/" style="margin-right:20px;">Home</a>
-    </body>
-  </html>
-`;
-
-let aboutPage = `
-  <html>
-    <head><title>About</title></head>
-    <body style="font-family: Arial; text-align:center;">
-      <a href="/" style="margin-right:20px;">Home</a>
-      <a href="/about" style="margin-right:20px;">About</a>
-      <a href="/contact">Contact</a>
-      <h1 style="color:green;">About Us</h1>
-      <p>We are learning Node.js server development.</p>
-    </body>
-  </html>
-`;
-
-let contactPage = `
-  <html>
-    <head><title>Contact</title></head>
-    <body style="font-family: Arial; text-align:center;">
-      <a href="/" style="margin-right:20px;">Home</a>
-      <a href="/about" style="margin-right:20px;">About</a>
-      <a href="/contact">Contact</a>
-      <h1 style="color:purple;">Contact Us</h1>
-      <p>Email: example@gmail.com</p>
-    </body>
-  </html>
-`;
+let fs = require("fs");
+let path = require("path");
 
 let server = http.createServer((req, res) => {
-  if (req.url === "/") {
-    res.end(homePage);
-  } else if (req.url === "/about") {
-    res.end(aboutPage);
-  } else if (req.url === "/contact") {
-    res.end(contactPage);
-  } else {
-    res.end("<h1>404 Page Not Found</h1>");
+  let filePath;
+  let route = req.url.toLowerCase();
+
+  switch (route) {
+    case "/":
+      filePath = path.join(__dirname, "home.html");
+      break;
+
+    case "/about":
+      filePath = path.join(__dirname, "about.html");
+      break;
+
+    case "/contact":
+      filePath = path.join(__dirname, "contact.html");
+      break;
+
+    case "/app.css":
+      filePath = path.join(__dirname, "app.css");
+      res.writeHead(200, { "Content-Type": "text/css" });
+      break;
+
+    default:
+      res.writeHead(404, { "Content-Type": "text/html" });
+      res.end("<h1>404 Page Not Found</h1>");
+      return;
   }
+
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.writeHead(500, { "Content-Type": "text/html" });
+      res.end("<h1>Server Error</h1>");
+    } else {
+      
+      if (route !== "/app.css") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+      }
+      res.end(data);
+    }
+  });
 });
 
 server.listen(5000, () => {
-  console.log("Server running on port 5000");
+  console.log("Server running on http://localhost:5000");
 });
