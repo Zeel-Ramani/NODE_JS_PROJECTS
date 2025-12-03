@@ -1,29 +1,86 @@
-<link rel="stylesheet" href="app.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
 
-<div class="container">
-  <div class="nav">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #dff9fb;
+    }
+    header {
+      background: #130f40;
+      padding: 20px;
+      text-align: center;
+    }
+    header a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 20px;
+    }
+    .container {
+      max-width: 550px;
+      background: white;
+      margin: 60px auto;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #130f40;
+    }
+    label {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #555;
+      border-radius: 8px;
+      font-size: 17px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 20px;
+      background: #130f40;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background: #1e3799;
+    }
+  </style>
+</head>
+<body>
+  <header>
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
+  </header>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <label>Name</label>
+    <input type="text" placeholder="Enter your name">
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter your email">
+
+    <label>Message</label>
+    <textarea rows="4" placeholder="Write your message..."></textarea>
+
+    <button>Send Message</button>
   </div>
-
-  <h1>Get in Touch</h1>
-  <p>Have a question or want to work together? We would love to hear from you.</p>
-  <br><br>
-
-  <h2>Contact Details</h2>
-  <ul style="font-size: 20px; line-height: 35px;">
-    <li>Phone: +91 98765 43210</li>
-    <li>Email: example@gmail.com</li>
-    <li>Address: India</li>
-  </ul>
-
-  <br><br>
-
-  <h2>Social Profiles</h2>
-  <ul style="font-size: 20px; line-height: 35px;">
-    <li>Instagram: @our_company</li>
-    <li>Facebook: /ourcompany</li>
-    <li>LinkedIn: Our Company Profile</li>
-  </ul>
-</div>
+</body>
+</html>
