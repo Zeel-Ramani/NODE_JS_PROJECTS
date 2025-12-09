@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management System</title>
+
+    <style>
+        :root {
+            --bg-primary: #0f0f1e;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --accent-cyan: #00d9ff;
+            --accent-pink: #ff006e;
+            --accent-lime: #39ff14;
+            --text-white: #ffffff;
+            --text-gray: #b0b0c0;
+            --border-color: #2a2a42;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--bg-secondary);
+            padding: 48px 40px;
+            position: relative;
+            border-bottom: 2px solid var(--accent-cyan);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink), var(--accent-lime), var(--accent-cyan));
+            animation: slideGradient 3s ease infinite;
+        }
+
+        @keyframes slideGradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .main-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        .form-section {
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+        }
+
+        .form-card {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 0, 110, 0.05) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+        }
+
+        .task-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+        }
+
+        .task-form input,
+        .task-form select,
+        .task-form textarea {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-white);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .task-form input::placeholder,
+        .task-form textarea::placeholder {
+            color: var(--text-gray);
+        }
+
+        .task-form input:focus,
+        .task-form select:focus,
+        .task-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.15);
+            background: rgba(0, 217, 255, 0.02);
+        }
+
+        .task-form button {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .task-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 217, 255, 0.3);
+        }
+
+        .task-form button:active {
+            transform: translateY(-1px);
+        }
+
+        .tasks-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-lime);
+        }
+
+        .tasks-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .task-card {
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.03) 0%, rgba(0, 217, 255, 0.03) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .task-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 24px rgba(0, 217, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .task-id-badge {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            color: var(--bg-primary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 12px;
+            text-align: center;
+            min-width: 50px;
+        }
+
+        .task-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .task-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 12px;
+        }
+
+        .task-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-gray);
+        }
+
+        .priority-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .priority-high {
+            background: rgba(255, 0, 110, 0.2);
+            color: var(--accent-pink);
+            border: 1px solid rgba(255, 0, 110, 0.3);
+        }
+
+        .priority-medium {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+        }
+
+        .priority-low {
+            background: rgba(57, 255, 20, 0.2);
+            color: var(--accent-lime);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+        }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+
+        .status-in-progress {
+            background: rgba(0, 217, 255, 0.2);
+            color: var(--accent-cyan);
+        }
+
+        .status-completed {
+            background: rgba(57, 255, 20, 0.2);
+            color: var(--accent-lime);
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            padding: 8px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .edit-btn {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+        }
+
+        .edit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 217, 255, 0.4);
+        }
+
+        .delete-btn {
+            background: var(--accent-pink);
+            color: var(--bg-primary);
+        }
+
+        .delete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 0, 110, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Task Hub</h1>
+</div>
+
+<div class="main-wrapper">
+    <div class="form-section">
+        <div class="form-card">
+            <h2>New Task</h2>
+            <form action="/addtask" method="post" class="task-form">
+                <div class="form-group">
+                    <label>Task ID</label>
+                    <input type="text" name="id" placeholder="e.g., TASK-001" required>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" placeholder="Task title" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" rows="3" placeholder="Add description..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Assigned To</label>
+                    <input type="text" name="assignedTo" placeholder="Team member name">
+                </div>
+                <div class="form-group">
+                    <label>Deadline</label>
+                    <input type="datetime-local" name="deadline" required>
+                </div>
+                <button type="submit">Create Task</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="tasks-section">
+        <h2>Active Tasks</h2>
+        <div class="tasks-grid">
+            <% tasks.forEach(task => { %>
+            <div class="task-card">
+                <div class="task-id-badge"><%= task.id %></div>
+                <div class="task-info">
+                    <div class="task-title"><%= task.title %></div>
+                    <div class="task-meta">
+                        <div class="task-meta-item">👤 <%= task.assignedTo %></div>
+                        <div class="task-meta-item">📅 <%= new Date(task.deadline).toLocaleDateString() %></div>
+                    </div>
+                </div>
+                <div class="task-actions">
+                    <a href="/edittask/<%= task.id %>" class="action-btn edit-btn">Edit</a>
+                    <a href="/deletetask/<%= task.id %>" class="action-btn delete-btn" onclick="return confirm('Delete this task?')">Delete</a>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ let server = http.createServer((req, res) => {
       break;
 
     default:
-      res.writeHead(404, { "Content-Type": "text/html" });
+      res.writeHead(404, { "Content-Type": "text/html"});
       res.end("<h1>404 Page Not Found</h1>");
       return;
   }
