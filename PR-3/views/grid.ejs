@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Full Width - Matrix Admin</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+
+<div id="main-wrapper">
+
+    <!-- Topbar -->
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+
+            <div class="navbar-header" data-logobg="skin5">
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                    <i class="ti-menu ti-close"></i>
+                </a>
+
+                <a class="navbar-brand" href="/dashboard">
+                    <b class="logo-icon p-l-10">
+                        <img src="/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                    </b>
+                    <span class="logo-text">
+                        <img src="/assets/images/logo-text.png" alt="homepage" class="light-logo" />
+                    </span>
+                </a>
+
+                <a class="topbartoggler d-block d-md-none waves-effect waves-light"
+                   href="javascript:void(0)" data-toggle="collapse"
+                   data-target="#navbarSupportedContent"
+                   aria-controls="navbarSupportedContent"
+                   aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="ti-more"></i>
+                </a>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+
+                <ul class="navbar-nav float-left mr-auto">
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link sidebartoggler waves-effect waves-light"
+                           href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                            <i class="mdi mdi-menu font-24"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item search-box">
+                        <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                            <i class="ti-search"></i>
+                        </a>
+                        <form class="app-search position-absolute">
+                            <input type="text" class="form-control" placeholder="Search & enter">
+                            <a class="srh-btn"><i class="ti-close"></i></a>
+                        </form>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+                           href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                            <a class="dropdown-item" href="javascript:void(0)">
+                                <i class="ti-user m-r-5 m-l-5"></i> My Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+        <div class="scroll-sidebar">
+
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav" class="p-t-30">
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span class="hide-menu">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/charts">
+                            <i class="mdi mdi-chart-bar"></i>
+                            <span class="hide-menu">Charts</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/widgets">
+                            <i class="mdi mdi-chart-bubble"></i>
+                            <span class="hide-menu">Widgets</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/tables">
+                            <i class="mdi mdi-border-inside"></i>
+                            <span class="hide-menu">Tables</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/grid">
+                            <i class="mdi mdi-blur-linear"></i>
+                            <span class="hide-menu">Full Width</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+    </aside>
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+
+    <!-- Breadcrumb -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Full Width</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Full Width</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container Fluid -->
+    <div class="container-fluid">
+
+        <!-- Start Page Content -->
+        <div class="row">
+
+            <!-- Full Width -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Full Width</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Half Width Cards -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Half Width</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Duis aute irure dolor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Half Width</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Duis aute irure dolor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- One Third Width (3 Cards) -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Third Width</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Third Width</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Third Width</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Third + One Third -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Two Third Width</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Third Width</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Four Equal Columns -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Fourth</h5>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Fourth</h5>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Fourth</h5>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">One Fourth</h5>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End Page Content -->
+
+    </div>
+    <!-- End Container Fluid -->
+    <!-- Footer -->
+    <footer class="footer text-center">
+        All Rights Reserved by Matrix-admin. Designed and Developed by
+        <a href="https://wrappixel.com">WrapPixel</a>.
+    </footer>
+
+</div> <!-- End Page Wrapper -->
+</div> <!-- End Main Wrapper -->
+
+<!-- JS FILES -->
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+
+<script src="/dist/js/waves.js"></script>
+<script src="/dist/js/sidebarmenu.js"></script>
+<script src="/dist/js/custom.min.js"></script>
+
+</body>
+</html>
