@@ -3,14 +3,11 @@ let path = require("path");
 
 let app = express();
 
-// EJS set
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Static folder
 app.use(express.static(path.join(__dirname, "public")));
 
-// ---------------- ROUTES ---------------- //
 
 // Dashboard
 app.get("/dashboard", (req, res) => {
@@ -47,21 +44,6 @@ app.get("/register", (req, res) => {
     res.render("register");
 });
 
-// Invoice
-app.get("/invoice", (req, res) => {
-    res.render("invoice");
-});
-
-// Chat Page
-app.get("/chat", (req, res) => {
-    res.render("chat");
-});
-
-// Gallery
-app.get("/gallery", (req, res) => {
-    res.render("gallery");
-});
-
 // Grid
 app.get("/grid", (req, res) => {
     res.render("grid");
@@ -72,12 +54,17 @@ app.get("/pages-buttons", (req, res) => {
     res.render("pages-buttons");
 });
 
+// Pages Elements
+app.get("/pages-elements", (req, res) => {
+    res.render("pages-elements");
+});
+
 // Default
 app.get("/", (req, res) => {
     res.redirect("/dashboard");
 });
 
-// Server start
+
 app.listen(3000, () => {
     console.log("Server running at http://localhost:3000");
 });

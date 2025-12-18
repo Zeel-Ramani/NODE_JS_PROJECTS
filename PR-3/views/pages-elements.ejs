@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <title>Matrix Template - Elements</title>
+
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+    <link href="/assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+
+        <!-- Topbar -->
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin5">
+
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                        <i class="ti-menu ti-close"></i>
+                    </a>
+
+                    <a class="navbar-brand" href="/dashboard">
+                        <b class="logo-icon p-l-10">
+                            <img src="/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <span class="logo-text">
+                            <img src="/assets/images/logo-text.png" alt="homepage" class="light-logo" />
+                        </span>
+                    </a>
+
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light"
+                        href="javascript:void(0)" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti-more"></i>
+                    </a>
+
+                </div>
+
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+
+                    <ul class="navbar-nav float-left mr-auto">
+                        <li class="nav-item d-none d-md-block">
+                            <a class="nav-link sidebartoggler waves-effect waves-light"
+                                href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                                <i class="mdi mdi-menu font-24"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                <span class="d-none d-md-block">Create New <i class="fa fa-angle-down"></i></span>
+                                <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item search-box">
+                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                                <i class="ti-search"></i>
+                            </a>
+                            <form class="app-search position-absolute">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <a class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
+                        </li>
+                    </ul>
+
+                    <!-- RIGHT NAV -->
+                    <ul class="navbar-nav float-right">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown">
+                                <i class="mdi mdi-bell font-24"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                                data-toggle="dropdown">
+                                <i class="font-24 mdi mdi-comment-processing"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+                                href="" data-toggle="dropdown">
+                                <img src="/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </nav>
+        </header>
+        <!-- End Topbar -->
+
+        <!-- Sidebar -->
+        <aside class="left-sidebar" data-sidebarbg="skin5">
+
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav" class="p-t-30">
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">
+                            <i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/charts">
+                            <i class="mdi mdi-chart-bar"></i><span class="hide-menu">Charts</span></a>
+                        </li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/widgets">
+                            <i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Widgets</span></a>
+                        </li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/tables">
+                            <i class="mdi mdi-border-inside"></i><span class="hide-menu">Tables</span></a>
+                        </li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/grid">
+                            <i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a>
+                        </li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/pages-buttons">
+                            <i class="mdi mdi-relative-scale"></i><span class="hide-menu">Buttons</span></a>
+                        </li>
+
+                        <li class="sidebar-item"><a class="sidebar-link" href="/pages-elements">
+                            <i class="mdi mdi-pencil"></i><span class="hide-menu">Elements</span></a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+
+        </aside>
+        <!-- End Sidebar -->
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+
+            <!-- Breadcrumb -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Elements</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Breadcrumb -->
+
+            <!-- Container Fluid -->
+            <div class="container-fluid">
+
+                <!-- Badges Section -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title m-b-0">Badges</h5>
+                            </div>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Badges</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><span class="badge badge-primary">Primary</span></td><td><code>.badge .badge-primary</code></td></tr>
+                                    <tr><td><span class="badge badge-secondary">Secondary</span></td><td><code>.badge .badge-secondary</code></td></tr>
+                                    <tr><td><span class="badge badge-success">Success</span></td><td><code>.badge .badge-success</code></td></tr>
+                                    <tr><td><span class="badge badge-danger">Danger</span></td><td><code>.badge .badge-danger</code></td></tr>
+                                    <tr><td><span class="badge badge-warning">Warning</span></td><td><code>.badge .badge-warning</code></td></tr>
+                                    <tr><td><span class="badge badge-info">Info</span></td><td><code>.badge .badge-info</code></td></tr>
+                                    <tr><td><span class="badge badge-light">Light</span></td><td><code>.badge .badge-light</code></td></tr>
+                                    <tr><td><span class="badge badge-dark">Dark</span></td><td><code>.badge .badge-dark</code></td></tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Pills -->
+                            <div class="card-body">
+                                <h5 class="card-title m-b-0">Pills</h5>
+                            </div>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Pills</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><span class="badge badge-pill badge-primary">Primary</span></td><td><code>badge badge-pill badge-primary</code></td></tr>
+                                    <tr><td><span class="badge badge-pill badge-secondary">Secondary</span></td><td><code>badge badge-pill badge-secondary</code></td></tr>
+                                    <tr><td><span class="badge badge-pill badge-success">Success</span></td><td><code>badge badge-pill badge-success</code></td></tr>
+                                    <tr><td><span class="badge badge-pill badge-danger">Danger</span></td><td><code>badge badge-pill badge-danger</code></td></tr>
+                                    <tr><td><span class="badge badge-pill badge-warning">Warning</span></td><td><code>badge badge-pill badge-warning</code></td></tr>
+                                    <tr><td><span class="badge badge-pill badge-info">Info</span></td><td><code>badge badge-pill badge-info</code></td></tr>
+                                    <tr><td><span class="badge badge-pill badge-light">Light</span></td><td><code>badge badge-pill badge-light</code></td></tr>
+                                    <tr><td><span class="badge badge-pill badge-dark">Dark</span></td><td><code>badge badge-pill badge-dark</code></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Section -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Notification</h5>
+                                <div class="row">
+                                    <div class="col-md-3"><button class="btn btn-lg btn-block btn-outline-success" id="ts-success">Success</button></div>
+                                    <div class="col-md-3"><button class="btn btn-lg btn-block btn-outline-info" id="ts-info">Info</button></div>
+                                    <div class="col-md-3"><button class="btn btn-lg btn-block btn-outline-warning" id="ts-warning">Warning</button></div>
+                                    <div class="col-md-3"><button class="btn btn-lg btn-block btn-outline-danger" id="ts-error">Error</button></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Icon Boxes Section -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Icon Box</h5>
+                                <div class="row">
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-cyan text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                                <h6 class="text-white">Dashboard</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-success text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                                <h6 class="text-white">Charts</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-warning text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-collage"></i></h1>
+                                                <h6 class="text-white">Widgets</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-danger text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-border-outside"></i></h1>
+                                                <h6 class="text-white">Tables</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-info text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-arrow-all"></i></h1>
+                                                <h6 class="text-white">Full Width</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-danger text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-receipt"></i></h1>
+                                                <h6 class="text-white">Forms</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-info text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-relative-scale"></i></h1>
+                                                <h6 class="text-white">Buttons</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-cyan text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-pencil"></i></h1>
+                                                <h6 class="text-white">Elements</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-success text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-calendar-check"></i></h1>
+                                                <h6 class="text-white">Calendar</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-info text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-arrow-all"></i></h1>
+                                                <h6 class="text-white">Full Width</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-danger text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-border-outside"></i></h1>
+                                                <h6 class="text-white">Tables</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                                        <div class="card card-hover">
+                                            <div class="box bg-warning text-center">
+                                                <h1 class="text-white"><i class="mdi mdi-alert"></i></h1>
+                                                <h6 class="text-white">Errors</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progressbars Section -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Progressbar</h5>
+
+                                <div class="progress m-t-15"><div class="progress-bar" style="width:25%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar bg-success" style="width:25%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar bg-info" style="width:50%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar bg-warning" style="width:75%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar bg-danger" style="width:100%"></div></div>
+
+                            </div>
+
+                            <!-- Striped Progress -->
+                            <div class="card-body border-top">
+                                <h5 class="card-title">Striped Progressbar</h5>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped" style="width:10%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped bg-success" style="width:25%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped bg-info" style="width:50%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped bg-warning" style="width:75%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped bg-danger" style="width:100%"></div></div>
+                            </div>
+
+                            <!-- Multiple Bars -->
+                            <div class="card-body border-top">
+                                <h5 class="card-title">Multiple Bars</h5>
+                                <div class="progress m-t-15">
+                                    <div class="progress-bar" style="width:15%"></div>
+                                    <div class="progress-bar bg-success" style="width:30%"></div>
+                                    <div class="progress-bar bg-info" style="width:20%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Animated Progress -->
+                            <div class="card-body border-top">
+                                <h5 class="card-title">Animated Progress</h5>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width:50%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:60%"></div></div>
+                                <div class="progress m-t-15"><div class="progress-bar progress-bar-striped progress-bar-animated bg-cyan" style="width:70%"></div></div>
+                            </div>
+
+                        </div>
+
+                        <!-- Modals Section -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Different Models</h5>
+
+                                <button class="btn btn-success margin-5" data-toggle="modal" data-target="#Modal1">View Popup</button>
+                                <button class="btn btn-warning margin-5 text-white" data-toggle="modal" data-target="#Modal2">Alert</button>
+                                <button class="btn btn-info margin-5" data-toggle="modal" data-target="#Modal3">Image Popup</button>
+
+                                <!-- Modal 1 -->
+                                <div class="modal fade" id="Modal1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Popup Header</h5>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">Here is the text coming...</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal 2 -->
+                                <div class="modal fade" id="Modal2">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Alert Model</h5>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">Lorem ipsum dolor sit amet...</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal 3 -->
+                                <div class="modal fade" id="Modal3">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Image Header</h5>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="/assets/images/background/img5.jpg" width="100%">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Tooltips -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Tooltips</h5>
+
+                                <button class="btn btn-secondary" data-toggle="tooltip" title="Tooltip on top">Top</button>
+                                <button class="btn btn-secondary" data-toggle="tooltip" title="Tooltip on right" data-placement="right">Right</button>
+                                <button class="btn btn-secondary" data-toggle="tooltip" title="Tooltip on bottom" data-placement="bottom">Bottom</button>
+                                <button class="btn btn-secondary" data-toggle="tooltip" title="Tooltip on left" data-placement="left">Left</button>
+
+                            </div>
+                        </div>
+
+                        <!-- Pagination Section -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Default Pagination</h5>
+                                        <nav>
+                                            <ul class="pagination">
+                                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Pagination with Icons</h5>
+                                        <nav>
+                                            <ul class="pagination">
+                                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Disabled & Active States</h5>
+                                        <nav>
+                                            <ul class="pagination">
+                                                <li class="page-item disabled"><a class="page-link">Previous</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alerts Section -->
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h5 class="card-title">Notification</h5>
+
+                                <div class="alert alert-primary">A simple primary alert—check it out!</div>
+                                <div class="alert alert-secondary">A simple secondary alert—check it out!</div>
+                                <div class="alert alert-success">A simple success alert—check it out!</div>
+                                <div class="alert alert-danger">A simple danger alert—check it out!</div>
+                                <div class="alert alert-warning">A simple warning alert—check it out!</div>
+                                <div class="alert alert-info">A simple info alert—check it out!</div>
+
+                            </div>
+
+                            <div class="card-body border-top">
+                                <h5 class="card-title">Additional Content</h5>
+
+                                <div class="alert alert-success">
+                                    <h4>Well done!</h4>
+                                    <p>You successfully read this important alert message...</p>
+                                </div>
+
+                                <div class="alert alert-warning">
+                                    <h4>Well done!</h4>
+                                    <p>You successfully read this important alert message...</p>
+                                </div>
+
+                                <div class="alert alert-danger">
+                                    <h4>Well done!</h4>
+                                    <p>You successfully read this important alert message...</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- End Container Fluid -->
+            <!-- Footer -->
+            <footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by 
+                <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
+
+        </div>
+        <!-- End Page Wrapper -->
+    </div>
+    <!-- End Main Wrapper -->
+
+    <!-- JS Libraries -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+
+    <!-- Core Scripts -->
+    <script src="/dist/js/waves.js"></script>
+    <script src="/dist/js/sidebarmenu.js"></script>
+    <script src="/dist/js/custom.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="/assets/libs/toastr/build/toastr.min.js"></script>
+
+    <script>
+        $(function () {
+
+            // Toastr
+            $('#ts-success').on('click', function () {
+                toastr.success('Have fun storming the castle!', 'Miracle Max Says');
+            });
+
+            $('#ts-info').on('click', function () {
+                toastr.info('We do have the Kapua suite available.', 'Turtle Bay Resort');
+            });
+
+            $('#ts-warning').on('click', function () {
+                toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!');
+            });
+
+            $('#ts-error').on('click', function () {
+                toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+            });
+
+            // Tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Popovers
+            $('[data-toggle="popover"]').popover();
+
+        });
+    </script>
+
+</body>
+</html>
