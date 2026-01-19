@@ -55,7 +55,6 @@ app.get("/logout", (req, res) => {
 })
 
 
-
 app.get("/dashboard", isAdminLoggedIn, (req, res) => {
   res.render("dashboard")
 })
