@@ -33,8 +33,6 @@ function isAdminLoggedIn(req, res, next) {
 
 const Blog = require("./models/Blog")
 
-
-
 app.get("/login", (req, res) => {
   res.render("login")
 })
@@ -154,8 +152,6 @@ app.get("/blogs/delete/:id", isAdminLoggedIn, async (req, res) => {
     res.status(500).send("Error deleting blog")
   }
 })
-
-
 
 app.get("/", (req, res) => {
   res.redirect("/dashboard")
