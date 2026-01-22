@@ -1,7 +1,7 @@
 {
   "name": "pr-6",
   "version": "1.0.0",
-  "description": "gmail : \"Prajapatijay0729@gmail.com\" , password : 12345",
+  "description": "gmail : \"zeelramani@gmail.com\" , password : 12345",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
