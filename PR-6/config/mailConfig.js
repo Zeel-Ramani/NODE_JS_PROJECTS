@@ -5,7 +5,7 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "zeelrramani@gmail.com",
+    user: "zeelramani@gmail.com",
     pass: "12345",
   },
   tls: {
@@ -17,7 +17,7 @@ async function sendOtpEmail(toEmail, otp) {
   if (!toEmail) throw new Error("Email is undefined");
 
   let mailOptions = {
-    from: '"Admin Panel" <zeelrramani@gmail.com>',
+    from: '"Admin Panel" <zeelramani@gmail.com>',
     to: toEmail,
     subject: "Your OTP Code",
     text: `Your OTP is: ${otp}`,
