@@ -1,5 +1,3 @@
-
-
 const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
@@ -12,7 +10,7 @@ const blogSchema = new mongoose.Schema(
     category: { 
       type: String, 
       required: true, 
-      enum: ["Technology", "Health", "Education", "Travel", "Other"] 
+      enum: ["Technology", "Health", "Education", "Travel","Adventure","Marketing","Entertainment", "Lifestyle","Other"] 
     },
     blogImage: { type: String }, 
     tags: { type: [String], default: [] }, 

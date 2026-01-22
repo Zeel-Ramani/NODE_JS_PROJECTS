@@ -1,7 +1,8 @@
+
 const mongoose = require("mongoose");
 
 const dbconnect = () => {
-    mongoose.connect("mongodb+srv://prajapatijay0729_db_user:ZgP0WrMXXBnKkfSf@cluster0.2m9kulu.mongodb.net/AdminAndBlog?retryWrites=true&w=majority")
+    mongoose.connect("mongodb+srv://ZeelRamani:zeel1234@zeelramani.2xisn6j.mongodb.net/blog")
     .then(() => console.log("Database connected successfully..."))
     .catch(err => console.error("Database Connection Error:", err));
 };

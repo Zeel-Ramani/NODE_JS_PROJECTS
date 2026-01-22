@@ -1,95 +1,143 @@
 const Blog = require("../model/blog-model");
+const path = require("path");
+const fs = require("fs");
 
-exports.getAllBlogs = async (req, res) => {
-  try {
-    const blogs = await Blog.find().sort({ createdAt: -1 });
-    res.render("view-blogs", { blogs });
-  } catch (error) {
-    console.error("Error fetching blogs:", error);
-    res.status(500).render("error", {
-      message: "An error occurred while fetching blogs."
-    });
-  }
-};
-
-exports.renderAddBlog = (req, res) => {
+const addBlogPage = (req, res) => {
   res.render("add-blog");
 };
 
-exports.addBlog = async (req, res) => {
-    try {
-        const blog = new Blog({
-            title: req.body.title,
-            content: req.body.content,
-            author: req.body.author,
-            category: req.body.category,
-            tags: req.body.tags ? req.body.tags.split(',') : [],
-            blogImage: req.file ? req.file.filename : ""
-        });
-
-        await blog.save();
-
-        res.redirect("/blog/view-blogs");   
-    } catch (error) {
-        console.log(error);
-        res.redirect("/blog/error");
-    }
-};
-
-exports.getSingleBlog = async (req, res) => {
+const viewAllBlogPage = async (req, res) => {
   try {
-    const blog = await Blog.findById(req.params.id);
+    let { category, search, page } = req.query;
+    let query = {};
 
-    if (!blog) {
-      return res.status(404).render("error", { message: "Blog not found" });
+    // If category is selected
+    // if (category && category !== "All") {
+    //   query.category = decodeURIComponent(category).trim(); 
+    // }
+    if (category && category.trim() !== "" && category !== "All") {
+      query.category = category.trim();
     }
 
-    res.render("single-blog", { blog });
+    if (search) {
+      const searchRegex = new RegExp(search.trim(), "i");
+      query.$or = [
+        { title: searchRegex },
+        { content: searchRegex },
+        { author: searchRegex },
+      ];
+    }
+
+
+    let limit = 6;
+    let currentPage = parseInt(page) || 1;
+    let skip = (currentPage - 1) * limit;
+
+    const totalBlogs = await Blog.countDocuments(query);
+    const blogs = await Blog.find(query).skip(skip).limit(limit).sort({ createdAt: -1 });
+
+    let totalPages = Math.ceil(totalBlogs / limit);
+
+    res.render("view-blogs", {
+      blogs,
+      category,
+      search,
+      currentPage,
+      totalPages,
+    });
   } catch (error) {
-    console.error("Error fetching blog:", error);
-    res.status(500).render("error", { message: "Something went wrong" });
+    console.error(error);
+    res.status(500).send("Error fetching blogs");
   }
 };
 
-exports.renderEditBlog = async (req, res) => {
+const addNewBlog = async (req, res) => {
+  try {
+    if (req.file) {
+      req.body.blogImage = req.file.filename;;
+    }
+
+    await Blog.create(req.body);
+    res.redirect("/blogs/view-blogs");
+  } catch (error) {
+    console.error(error);
+    res.redirect("back");
+  }
+};
+
+const editBlogPage = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
-    if (!blog) {
-      return res.status(404).render("error", { message: "Blog not found" });
-    }
+    if (!blog) return res.redirect("back");
+
     res.render("edit-blog", { blog });
   } catch (error) {
-    res.status(500).render("error", { message: "Error loading blog" });
+    console.error(error);
+    res.redirect("back");
   }
 };
 
-exports.updateBlog = async (req, res) => {
+const updateBlog = async (req, res) => {
   try {
-      const tags = req.body && req.body.tags
-  ? req.body.tags.split(",").map(t => t.trim())
-  : [];
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.redirect("back");
 
-    await Blog.findByIdAndUpdate(req.params.id, {
-      title: req.body.title,
-      content: req.body.content,
-      author: req.body.author,
-      category: req.body.category,
-      tags,
-      blogImage: req.file ? req.file.filename : req.body.oldImage
-    });
+    if (req.file) {
+      if (blog.blogImage) {
+        const oldPath = path.join(__dirname, "..", "public", blog.blogImage);
+        if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
+      }
+      req.body.blogImage = req.file.filename;;
+    }
 
-    res.redirect("/blog/view-blogs");
+    if (req.body.tags) {
+      req.body.tags = req.body.tags.split(",").map(t => t.trim());
+    }
 
+    await Blog.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect("/blogs/view-blogs");
   } catch (error) {
-    res.status(500).render("error", { message: "Update failed" });
+    console.error(error);
+    res.redirect("back");
   }
 };
 
-exports.deleteBlog = async (req, res) => {
+const deleteBlog = async (req, res) => {
   try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.redirect("back");
+
+    if (blog.blogImage) {
+      const imgPath = path.join(__dirname, "..", "public", blog.blogImage);
+      if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath);
+    }
+
     await Blog.findByIdAndDelete(req.params.id);
-    res.redirect("/blog/view-blogs");
+    res.redirect("/blogs/view-blogs");
   } catch (error) {
-    res.status(500).render("error", { message: "Delete failed" });
+    console.error(error);
+    res.redirect("back");
   }
+};
+
+const getBlogDetails = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.redirect("back");
+
+    res.render("blog/single-blog", { blog });
+  } catch (error) {
+    console.error(error);
+    res.redirect("back");
+  }
+};
+
+module.exports = {
+  addBlogPage,
+  viewAllBlogPage,
+  addNewBlog,
+  editBlogPage,
+  updateBlog,
+  deleteBlog,
+  getBlogDetails,
 };

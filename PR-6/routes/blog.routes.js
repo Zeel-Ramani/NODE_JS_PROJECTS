@@ -3,28 +3,28 @@ const blogRoutes = express.Router();
 const Blog = require("../model/blog-model");
 
 const {
-  renderAddBlog,
-  getAllBlogs,
-  addBlog,
-  renderEditBlog,
+  addBlogPage,
+  viewAllBlogPage,
+  addNewBlog,
+  editBlogPage,
   updateBlog,
   deleteBlog,
-  getSingleBlog,
+  getBlogDetails,
 } = require("../controller/blog.controller");
 
-blogRoutes.get("/add-blog", renderAddBlog);
+blogRoutes.get("/add-blog", addBlogPage);
 
 blogRoutes.post(
   "/add-blog",
-  Blog.uploadImage,   
-  addBlog
+  Blog.uploadImage,
+  addNewBlog
 );
 
-blogRoutes.get("/view-blogs", getAllBlogs);
+blogRoutes.get("/view-blogs", viewAllBlogPage);
 
-blogRoutes.get("/view-blog/:id", getSingleBlog);
+blogRoutes.get("/view-blog/:id", getBlogDetails);
 
-blogRoutes.get("/edit-blog/:id", renderEditBlog);
+blogRoutes.get("/edit-blog/:id", editBlogPage);
 
 blogRoutes.post(
   "/edit-blog/:id",

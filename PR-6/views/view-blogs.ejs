@@ -1,269 +1,81 @@
 <%- include('blog/header') %>
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(180deg, #f4f7fb, #e9eef5);
-            margin: 0;
-            padding: 0;
-            color: #1f2937;
-        }
+<style>
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f4f6fb;
+}
+.main-content{margin-left:260px;padding:30px}
+@media(max-width:992px){.main-content{margin-left:0}}
 
-        .main-content {
-            margin-left: 260px;
-            padding: 20px;
-        }
+.blog-header{
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
+  color:#fff;
+  padding:50px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(79,70,229,.4)
+}
 
-        @media (max-width: 992px) {
-            .main-content {
-                margin-left: 0;
-            }
-        }
+.blog-card{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  transition:.35s
+}
+.blog-card:hover{transform:translateY(-6px)}
+.blog-card img{
+  width:100%;height:220px;object-fit:cover
+}
+.blog-body{padding:20px}
+.blog-title{font-weight:700;font-size:18px}
+.blog-meta{font-size:13px;color:#6b7280}
+.blog-actions{
+  display:flex;gap:8px;margin-top:15px
+}
+.blog-actions a, .blog-actions button{
+  flex:1;border-radius:20px;font-size:13px
+}
+</style>
 
-        .container {
-            max-width: 1100px;
-            padding: 0 15px;
-            margin: auto;
-        }
+<div class="main-content">
+  <div class="container-fluid">
 
-        .hero {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
-            padding: 60px 30px;
-            text-align: center;
-            border-radius: 18px;
-            margin: 40px 0;
-            box-shadow: 0 12px 32px rgba(15, 32, 39, 0.4);
-        }
+    <div class="blog-header mb-4">
+      <h1>My Blog Dashboard</h1>
+      <p>Manage, edit and publish your blogs</p>
+      <a href="/blogs/add-blog" class="btn btn-light btn-lg mt-2">➕ Add New Blog</a>
+    </div>
 
-        .hero h1 {
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        .hero p {
-            opacity: 0.9;
-            font-size: 15px;
-            margin-bottom: 22px;
-        }
-
-        .card {
-            border-radius: 16px;
-            background: #ffffff;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transition: 0.35s ease;
-            overflow: hidden;
-            height: 100%;
-            border: none;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .blog-img {
-            width: 100%;
-            height: auto;
-            max-height: 220px;
-            object-fit: contain;
-            background: #f1f5f9;
-            padding: 8px;
-        }
-
-        .card-body {
-            padding: 18px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-
-        .card-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #111827;
-        }
-
-        .card-text {
-            font-size: 14px;
-            color: #4b5563;
-            flex-grow: 1;
-        }
-
-        .btn-sm {
-            border-radius: 18px;
-            padding: 8px 14px;
-            font-size: 13px;
-            line-height: 1.5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-        .btn-primary {
-            background: #2563eb;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: #1e40af;
-        }
-
-        .btn-warning {
-            background: #f59e0b;
-            border: none;
-        }
-
-        .btn-danger {
-            background: #dc2626;
-            border: none;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .card-actions a,
-        .card-actions button {
-            flex: 1;
-            white-space: nowrap;
-        }
-
-        .modal-content {
-            border-radius: 16px;
-            border: none;
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #203a43, #2c5364);
-            color: #ffffff;
-            border-bottom: none;
-        }
-
-        .modal-body img {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 15px;
-        }
-
-        .text-muted {
-            font-size: 13px;
-            color: #6b7280 !important;
-        }
-    </style>
-
-    <div class="main-content">
-        <div class="container">
-
-            <div class="hero">
-                <h1>Explore Inspiring Blogs</h1>
-                <p>Read the latest blogs and discover new insights.</p>
-                <a href="/blog/add-blog" class="btn btn-light btn-lg">
-                    Write a Blog
-                </a>
+    <div class="row">
+      <% blogs.forEach(blog=>{ %>
+      <div class="col-md-4 mb-4">
+        <div class="blog-card">
+          <% if(blog.blogImage){ %>
+          <img src="/uploads/<%= blog.blogImage %>">
+          <% } %>
+          <div class="blog-body">
+            <div class="blog-title"><%= blog.title %></div>
+            <div class="blog-meta">
+              <%= blog.category %> • <%= new Date(blog.createdAt).toDateString() %>
             </div>
+            <p class="mt-2"><%= blog.content.substring(0,90) %>...</p>
 
-            <h2 class="text-center my-4">Latest Blogs</h2>
-
-            <% if (blogs.length> 0) { %>
-                <div class="row">
-                    <% blogs.forEach(blog=> { %>
-                        <div class="col-md-4 d-flex">
-                            <div class="card mb-4 w-100">
-
-                                <% if (blog.blogImage) { %>
-                                    <img src="/uploads/<%= blog.blogImage %>" class="blog-img">
-                                    <% } %>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                <%= blog.title %>
-                                            </h5>
-                                            <p class="card-text">
-                                                <%= blog.content.substring(0, 100) %>...
-                                            </p>
-
-                                            <p class="text-muted"><strong>Category:</strong>
-                                                <%= blog.category %>
-                                            </p>
-                                            <p class="text-muted">
-                                                By <%= blog.author %> on
-                                                    <%= new Date(blog.createdAt).toDateString() %>
-                                            </p>
-
-                                            <div class="card-actions">
-                                                <a href="/blog/edit-blog/<%= blog._id %>"
-                                                    class="btn btn-warning btn-sm">
-                                                    Edit
-                                                </a>
-
-                                                <form action="/blog/delete-blog/<%= blog._id %>" method="POST">
-                                                    <button type="submit" class="btn btn-danger btn-sm w-100"
-                                                        onclick="return confirm('Delete this blog?')">
-                                                        Delete
-                                                    </button>
-                                                </form>
-
-                                                <a href="/blog/view-blog/<%= blog._id %>"
-                                                    class="btn btn-primary btn-sm">
-                                                    Read More
-                                                </a>
-
-                                            </div>
-                                        </div>
-                            </div>
-                        </div>
-
-                        <!-- MODAL -->
-                        <div class="modal fade" id="blogModal<%= blog._id %>" tabindex="-1">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">
-                                            <%= blog.title %>
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal">
-                                            <span>&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <% if (blog.blogImage) { %>
-                                            <img src="/uploads/<%= blog.blogImage %>">
-                                            <% } %>
-
-                                                <p>
-                                                    <%= blog.content %>
-                                                </p>
-                                                <p class="text-muted"><strong>Category:</strong>
-                                                    <%= blog.category %>
-                                                </p>
-                                                <p class="text-muted">
-                                                    By <%= blog.author %> on
-                                                        <%= new Date(blog.createdAt).toDateString() %>
-                                                </p>
-
-                                                <% if (blog.tags.length> 0) { %>
-                                                    <p><strong>Tags:</strong>
-                                                        <%= blog.tags.join(", ") %></p>
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <% }); %>
+            <div class="blog-actions">
+              <a href="/blogs/edit-blog/<%= blog._id %>" class="btn btn-warning">Edit</a>
+              <form action="/blogs/delete-blog/<%= blog._id %>" method="POST">
+                <button class="btn btn-danger"
+                  onclick="return confirm('Delete this blog?')">Delete</button>
+              </form>
             </div>
-        <% } else { %>
-            <p class=" text-center">No blogs available. Be the first to write one!
-                                                    </p>
-                                                    <% } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
 
-                                    </div>
-                                </div>
+  </div>
+</div>
 
-                                <%- include('blog/footer') %>
+<%- include('blog/footer') %>
