@@ -1,2 +1,2 @@
-gmail : "Prajapatijay0729@gmail.com" ,
-password : 12345
+gmail - zeelrramani@gmail.com
+password - 0123
