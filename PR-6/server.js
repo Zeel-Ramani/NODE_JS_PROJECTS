@@ -15,6 +15,7 @@ app.use("/", express.static(path.join(__dirname, 'public')))
 app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 app.use(cookieParser());
 app.use(express.urlencoded());
+app.use("/admin/category", require("./routes/category.routes"));
 
 app.use(session({
     name: 'test',

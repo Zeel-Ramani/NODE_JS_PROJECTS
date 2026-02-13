@@ -1,81 +1,117 @@
 <%- include('blog/header') %>
 
-<style>
-body{
-  font-family:'Poppins',sans-serif;
-  background:#f4f6fb;
-}
-.main-content{margin-left:260px;padding:30px}
-@media(max-width:992px){.main-content{margin-left:0}}
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6fb;
+    }
 
-.blog-header{
-  background:linear-gradient(135deg,#6366f1,#4f46e5);
-  color:#fff;
-  padding:50px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 20px 40px rgba(79,70,229,.4)
-}
+    .main-content {
+      margin-left: 260px;
+      padding: 30px
+    }
 
-.blog-card{
-  background:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-  transition:.35s
-}
-.blog-card:hover{transform:translateY(-6px)}
-.blog-card img{
-  width:100%;height:220px;object-fit:cover
-}
-.blog-body{padding:20px}
-.blog-title{font-weight:700;font-size:18px}
-.blog-meta{font-size:13px;color:#6b7280}
-.blog-actions{
-  display:flex;gap:8px;margin-top:15px
-}
-.blog-actions a, .blog-actions button{
-  flex:1;border-radius:20px;font-size:13px
-}
-</style>
+    @media(max-width:992px) {
+      .main-content {
+        margin-left: 0
+      }
+    }
 
-<div class="main-content">
-  <div class="container-fluid">
+    .blog-header {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: #fff;
+      padding: 50px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(79, 70, 229, .4)
+    }
 
-    <div class="blog-header mb-4">
-      <h1>My Blog Dashboard</h1>
-      <p>Manage, edit and publish your blogs</p>
-      <a href="/blogs/add-blog" class="btn btn-light btn-lg mt-2">➕ Add New Blog</a>
-    </div>
+    .blog-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+      transition: .35s
+    }
 
-    <div class="row">
-      <% blogs.forEach(blog=>{ %>
-      <div class="col-md-4 mb-4">
-        <div class="blog-card">
-          <% if(blog.blogImage){ %>
-          <img src="/uploads/<%= blog.blogImage %>">
-          <% } %>
-          <div class="blog-body">
-            <div class="blog-title"><%= blog.title %></div>
-            <div class="blog-meta">
-              <%= blog.category %> • <%= new Date(blog.createdAt).toDateString() %>
-            </div>
-            <p class="mt-2"><%= blog.content.substring(0,90) %>...</p>
+    .blog-card:hover {
+      transform: translateY(-6px)
+    }
 
-            <div class="blog-actions">
-              <a href="/blogs/edit-blog/<%= blog._id %>" class="btn btn-warning">Edit</a>
-              <form action="/blogs/delete-blog/<%= blog._id %>" method="POST">
-                <button class="btn btn-danger"
-                  onclick="return confirm('Delete this blog?')">Delete</button>
-              </form>
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover
+    }
+
+    .blog-body {
+      padding: 20px
+    }
+
+    .blog-title {
+      font-weight: 700;
+      font-size: 18px
+    }
+
+    .blog-meta {
+      font-size: 13px;
+      color: #6b7280
+    }
+
+    .blog-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px
+    }
+
+    .blog-actions a,
+    .blog-actions button {
+      flex: 1;
+      border-radius: 20px;
+      font-size: 13px
+    }
+  </style>
+
+  <div class="main-content">
+    <div class="container-fluid">
+
+      <div class="blog-header mb-4">
+        <h1>My Blog Dashboard</h1>
+        <p>Manage, edit and publish your blogs</p>
+        <a href="/blogs/add-blog" class="btn btn-light btn-lg mt-2">➕ Add New Blog</a>
+      </div>
+
+      <div class="row">
+        <% blogs.forEach(blog=>{ %>
+          <div class="col-md-4 mb-4">
+            <div class="blog-card">
+              <% if(blog.blogImage){ %>
+                <img src="/uploads/<%= blog.blogImage %>">
+                <% } %>
+                  <div class="blog-body">
+                    <div class="blog-title">
+                      <%= blog.title %>
+                    </div>
+                    <div class="blog-meta">
+                      <%= blog.category %> • <%= new Date(blog.createdAt).toDateString() %>
+                    </div>
+                    <p class="mt-2">
+                      <%= blog.content.substring(0,90) %>...
+                    </p>
+
+                    <div class="blog-actions">
+                      <a href="/blogs/edit-blog/<%= blog._id %>" class="btn btn-warning">Edit</a>
+                      <form action="/blogs/delete-blog/<%= blog._id %>" method="POST">
+                        <button class="btn btn-danger" onclick="return confirm('Delete this blog?')">Delete</button>
+                      </form>
+                    </div>
+                  </div>
             </div>
           </div>
-        </div>
+          <% }) %>
       </div>
-      <% }) %>
+
     </div>
-
   </div>
-</div>
 
-<%- include('blog/footer') %>
+  <%- include('blog/footer') %>

@@ -40,16 +40,12 @@
             <textarea class="form-control mb-3" rows="5" name="content" placeholder="Blog Content" required></textarea>
             <input class="form-control mb-3" name="author" placeholder="Author Name" required>
 
-            <select class="form-control mb-3" name="category" required>
-                <option>Technology</option>
-                <option>Health</option>
-                <option>Education</option>
-                <option>Travel</option>
-                <option>Adventure</option>
-                <option>Marketing</option>
-                <option>Entertainment</option>
-                <option>Lifestyle</option>
-                <option>Other</option>
+            <select name="category" required>
+                <% categories.forEach(cat=> { %>
+                    <option value="<%= cat._id %>">
+                        <%= cat.name %>
+                    </option>
+                    <% }) %>
             </select>
 
             <input type="file" class="form-control mb-3" name="blogImage">

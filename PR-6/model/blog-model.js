@@ -7,23 +7,24 @@ const blogSchema = new mongoose.Schema(
     title: { type: String, required: true, trim: true, minlength: 3, maxlength: 100 },
     content: { type: String, required: true, trim: true, minlength: 10 },
     author: { type: String, required: true, trim: true, minlength: 3, maxlength: 50 },
-    category: { 
-      type: String, 
-      required: true, 
-      enum: ["Technology", "Health", "Education", "Travel","Adventure","Marketing","Entertainment", "Lifestyle","Other"] 
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: true
     },
-    blogImage: { type: String }, 
-    tags: { type: [String], default: [] }, 
+
+    blogImage: { type: String },
+    tags: { type: [String], default: [] },
   },
   { timestamps: true }
 );
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "..", "uploads")); 
+    cb(null, path.join(__dirname, "..", "uploads"));
   },
   filename: (req, file, cb) => {
-    cb(null, `blogImage-${Date.now()}${path.extname(file.originalname)}`); 
+    cb(null, `blogImage-${Date.now()}${path.extname(file.originalname)}`);
   }
 });
 
