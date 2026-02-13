@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Product</title>
+
+<style>
+body{
+ font-family:Arial;
+ background:#f1f5f9;
+}
+
+.box{
+ width:400px;
+ margin:100px auto;
+ background:white;
+ padding:25px;
+ border-radius:10px;
+ box-shadow:0 0 10px gray;
+ text-align:center;
+}
+
+input{
+ width:90%;
+ padding:10px;
+ margin:5px;
+}
+
+button{
+ padding:10px 25px;
+ background:#2563eb;
+ color:white;
+ border:none;
+ border-radius:5px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+
+<h2>Edit Product</h2>
+
+<form method="post" action="/product/update/<%=product._id%>">
+
+<input name="name" value="<%=product.name%>" required><br>
+
+<input name="price" value="<%=product.price%>" required><br>
+
+<input name="category" value="<%=product.category%>"><br><br>
+
+<button>Update</button>
+
+</form>
+
+<br>
+<a href="/dashboard">Back</a>
+
+</div>
+
+</body>
+</html>

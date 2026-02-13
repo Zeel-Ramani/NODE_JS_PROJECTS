@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/style.css">
+
+<div class="navbar">
+  <a href="/dashboard">Dashboard</a>
+  <a href="/logout">Logout</a>
+</div>
+
+<div class="container">
+
+<h2>Categories</h2>
+
+<form method="post" action="/categories/add">
+
+<input name="name" placeholder="Category Name" required>
+
+<button>Add</button>
+
+</form>
+
+<hr>
+
+<% categories.forEach(c=>{ %>
+
+<div class="product">
+  <span><%= c.name %></span>
+</div>
+
+<% }) %>
+
+</div>
